@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="etLogin" type="id" />
+    <item name="etPassword" type="id" />
+    <item name="btnLogin" type="id" />
+    <item name="btnRegister" type="id" />
+    <item name="btnProducts" type="id" />
+    <item name="btnProduction" type="id" />
+    <item name="btnSales" type="id" />
+    <item name="btnSelectDate" type="id" />
+    <item name="salesRecyclerView" type="id" />
+    <item name="fabAddSale" type="id" />
+    <item name="lineChartView" type="id" />
+</resources>

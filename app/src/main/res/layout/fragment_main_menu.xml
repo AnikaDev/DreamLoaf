@@ -1,0 +1,45 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/background_register">
+
+
+    <Button
+        android:id="@+id/btnProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Продукты"
+        style="@style/MainMenuButtonStyle"/>
+
+
+    <Button
+        android:id="@+id/btnProduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Производство"
+        style="@style/MainMenuButtonStyle"/>
+
+
+    <Button
+        android:id="@+id/btnSales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Учёт продаж"
+        style="@style/MainMenuButtonStyle"/>
+
+
+    <Button
+        android:id="@+id/btnStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Статистика продаж"
+        style="@style/MainMenuButtonStyle"/>
+</LinearLayout>

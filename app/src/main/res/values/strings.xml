@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">DreamLoaf</string>
+    <string name="select_product">Выберите продукт</string>
+    <string name="quantity">Количество</string>
+    <string name="save">Сохранить</string>
+    <string name="delete_product">Удалить продукт</string>
+    <string name="add_product">Добавить продукт</string>
+    <string name="no_products_message">Нет продуктов</string>
+    <string name="production_list_description">Список производства</string>
+    <string name="add_production_description">Добавить производство</string>
+    <string name="select_role">Выберите роль</string>
+    <string name="edit">Редактировать</string>
+    <string name="back">Назад</string>
+    <string name="select_date">Выберите дату</string>
+    <string name="produced">Выпущено:</string>
+    <string name="sold">Продано:</string>
+    <string name="date_format">Дата: %s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_sold">Всего продано: %d шт.</string>
+    <string name="total_revenue">Общая выручка: %.2f руб.</string>
+    <string name="product_count">Количество видов товаров: %d</string>
+    <string name="sales_list_description">Список продаж</string>
+    <string name="no_sales_message">Нет данных о продажах</string>
+    <string name="add_sale_description">Добавить продажу</string>
+</resources>

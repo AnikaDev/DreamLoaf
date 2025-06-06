@@ -1,0 +1,132 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.DreamLoaf" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+    <style name="RoundedButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textColor">@color/buttonText</item>
+        <item name="android:backgroundTint">@color/buttonBackground</item>
+        <item name="cornerRadius">16dp</item>  <!-- Закругление углов -->
+        <item name="android:elevation">4dp</item>  <!-- Тень -->
+    </style>
+
+
+    <style name="SquareButtonStylePrimary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="cornerRadius">0dp</item> <!-- Убираем закругления -->
+        <item name="android:elevation">2dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+
+    <style name="LoginButtonStyle" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="SquareButtonStyleSecondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="android:elevation">1dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SaveButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@android:color/white</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+
+    <style name="ChartBackgroundStyle">
+        <item name="android:background">@drawable/bg_chart_background</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="ChartTitleStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="MainMenuButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@android:color/white</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+
+
+    <style name="BlueFabStyle" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/light_blue</item>
+        <item name="tint">@color/white</item>
+        <item name="elevation">6dp</item>
+        <item name="rippleColor">@color/blue_dark</item>
+    </style>
+
+    <style name="QuantityButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minWidth">40dp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+
+
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="CircleButton" parent="PrimaryButton">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+
+    <style name="SquareAddButton" parent="PrimaryButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="cornerRadius">0dp</item>
+    </style>
+    <style name="Theme.DreamLoaf" parent="Base.Theme.DreamLoaf" />
+</resources>

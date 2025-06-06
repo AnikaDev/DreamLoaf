@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.dreamloaf.auth.LoginFragment"
+        android:label="Вход в систему"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/toRegisterFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/toMainMenu"
+            app:destination="@id/mainMenuFragment">
+            <argument
+                android:name="user_role"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.dreamloaf.auth.RegisterFragment"
+        android:label="Регистрация"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.dreamloaf.main.MainMenuFragment"
+        android:label="Главное меню"
+        tools:layout="@layout/fragment_main_menu">
+        <argument
+            android:name="user_role"
+            app:argType="string" />
+        <action
+            android:id="@+id/toProductList"
+            app:destination="@id/productListFragment" />
+        <action
+            android:id="@+id/toCalendar"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/toSalesLog"
+            app:destination="@id/salesLogFragment" />
+        <action
+            android:id="@+id/toSalesStatistics"
+            app:destination="@id/salesStatisticsFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.example.dreamloaf.products.ProductListFragment"
+        android:label="Список продуктов"
+        tools:layout="@layout/fragment_product_list">
+        <action
+            android:id="@+id/toAddProduct"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.dreamloaf.products.AddProductFragment"
+        android:label="Добавить продукт"
+        tools:layout="@layout/fragment_add_product" />
+
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.dreamloaf.production.CalendarFragment"
+        android:label="Выбор даты"
+        tools:layout="@layout/fragment_calendar">
+        <argument
+            android:name="selected_date"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_calendarFragment_to_productionLogFragment"
+            app:destination="@id/productionLogFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productionLogFragment"
+        android:name="com.example.dreamloaf.production.ProductionLogFragment"
+        android:label="Учёт производства"
+        tools:layout="@layout/fragment_production_log">
+        <argument
+            android:name="selected_date"
+            app:argType="string" />
+        <action
+            android:id="@+id/toAddProduction"
+            app:destination="@id/addProductionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addProductionFragment"
+        android:name="com.example.dreamloaf.production.AddProductionFragment"
+        android:label="Добавить выпуск"
+        tools:layout="@layout/fragment_add_production" />
+
+
+    <fragment
+        android:id="@+id/salesLogFragment"
+        android:name="com.example.dreamloaf.sales.SalesLogFragment"
+        android:label="Учёт продаж"
+        tools:layout="@layout/fragment_sales_log">
+        <action
+            android:id="@+id/toAddSale"
+            app:destination="@id/addSaleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addSaleFragment"
+        android:name="com.example.dreamloaf.sales.AddSaleFragment"
+        android:label="Добавить продажу"
+        tools:layout="@layout/fragment_add_sale" />
+
+
+    <fragment
+        android:id="@+id/salesStatisticsFragment"
+        android:name="com.example.dreamloaf.reports.SalesStatisticsFragment"
+        android:label="Статистика продаж"
+        tools:layout="@layout/fragment_sales_statistics" />
+</navigation>
