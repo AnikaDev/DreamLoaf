@@ -20,7 +20,12 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
         void onDeleteClick(Product product);
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(Product product);
+    }
+
     private OnDeleteClickListener onDeleteClickListener;
+    private OnItemClickListener onItemClickListener;
 
     private static final DiffUtil.ItemCallback<Product> DIFF_CALLBACK = new DiffUtil.ItemCallback<Product>() {
         @Override
@@ -41,6 +46,10 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
 
     public void setOnDeleteClickListener(OnDeleteClickListener listener) {
         this.onDeleteClickListener = listener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 
     @NonNull
@@ -69,6 +78,18 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             tvWeight = itemView.findViewById(R.id.tvWeight);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                    Product product = getItem(position);
+
+                    if (v.getTag() != null && (long)v.getTag() + 500 > System.currentTimeMillis()) {
+                        onItemClickListener.onItemClick(product);
+                    }
+                    v.setTag(System.currentTimeMillis());
+                }
+            });
         }
 
         public void bind(Product product) {

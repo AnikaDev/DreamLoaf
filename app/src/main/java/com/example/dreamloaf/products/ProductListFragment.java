@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.dreamloaf.R;
 import com.example.dreamloaf.adapter.ProductAdapter;
+import com.example.dreamloaf.data.Product;
 import com.example.dreamloaf.databinding.FragmentProductListBinding;
 import com.example.dreamloaf.viewmodels.ProductViewModel;
 
@@ -53,6 +55,12 @@ public class ProductListFragment extends Fragment {
                     .setPositiveButton("Да", (d, w) -> viewModel.delete(product.getId()))
                     .setNegativeButton("Нет", null)
                     .show();
+        });
+
+        adapter.setOnItemClickListener(product -> {
+            Bundle args = new Bundle();
+            args.putInt("product_id", product.getId());
+            Navigation.findNavController(requireView()).navigate(R.id.toAddProduct, args);
         });
     }
 

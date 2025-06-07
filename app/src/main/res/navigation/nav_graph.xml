@@ -66,12 +66,6 @@
             app:destination="@id/addProductFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/addProductFragment"
-        android:name="com.example.dreamloaf.products.AddProductFragment"
-        android:label="Добавить продукт"
-        tools:layout="@layout/fragment_add_product" />
-
 
     <fragment
         android:id="@+id/calendarFragment"
@@ -94,16 +88,18 @@
         <argument
             android:name="selected_date"
             app:argType="string" />
-        <action
-            android:id="@+id/toAddProduction"
-            app:destination="@id/addProductionFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/addProductionFragment"
-        android:name="com.example.dreamloaf.production.AddProductionFragment"
-        android:label="Добавить выпуск"
-        tools:layout="@layout/fragment_add_production" />
+        android:id="@+id/addProductFragment"
+        android:name="com.example.dreamloaf.products.AddProductFragment"
+        android:label="Добавить продукт"
+        tools:layout="@layout/fragment_add_product">
+        <argument
+            android:name="product_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
 
 
     <fragment

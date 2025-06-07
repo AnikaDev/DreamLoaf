@@ -40,4 +40,11 @@ public class ProductViewModel extends AndroidViewModel {
     public LiveData<List<Product>> getAllProducts() {
         return productRepo.getAllProducts();
     }
+
+    public void update(Product product) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            AppDatabase db = AppDatabase.getInstance(getApplication());
+            db.productDao().update(product);
+        });
+    }
 }
