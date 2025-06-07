@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".products.AddProductFragment"
+    android:fillViewport="true"
     android:background="@drawable/back">
 
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:hint="Название продукта"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/weightEditText"
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:layout_marginTop="8dp"
-        android:hint="Вес (г)"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/priceEditText"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:layout_marginTop="8dp"
-        android:hint="Цена продажи"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/costPriceEditText"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:layout_marginTop="8dp"
-        android:hint="Себестоимость (необязательно)"
-        android:inputType="numberDecimal" />
-
-    <Button
-        android:id="@+id/saveButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Сохранить"
-        style="@style/SaveButtonStyle"/>
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".products.AddProductFragment">
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Название продукта"
+            android:inputType="text"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/weightEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Вес (г)"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/priceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Цена продажи"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/costPriceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Себестоимость (необязательно)"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"/>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Сохранить"
+            style="@style/SaveButtonStyle"/>
+    </LinearLayout>
+</ScrollView>
