@@ -17,7 +17,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.dreamloaf.charts.LineChartView;
 import com.example.dreamloaf.data.Product;
 import com.example.dreamloaf.data.Sale;
 import com.example.dreamloaf.databinding.FragmentSalesStatisticsBinding;
