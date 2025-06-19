@@ -8,57 +8,56 @@ import com.example.dreamloaf.data.Sale
 import com.example.dreamloaf.data.SaleDao
 import java.util.concurrent.Executors
 
-class SaleRepository(application: Application) {
-    private val database: AppDatabase = AppDatabase.getInstance(application)
-    private val saleDao: SaleDao = database.saleDao()
+class SaleRepository(application: Application?) {
+    private val saleDao: SaleDao
+    private val database: AppDatabase
 
-    fun addSale(productId: Int, quantity: Int, date: String) {
+    init {
+        database = AppDatabase.getInstance(application!!.applicationContext)!!
+        saleDao = database.saleDao()!!
+    }
+
+    fun addSale(productId: Int, quantity: Int, date: String?) {
         Executors.newSingleThreadExecutor().execute {
-            val sale = Sale().apply {
-                this.productId = productId
-                this.quantity = quantity
-                this.date = date
-                this.userId = 1
-            }
+            val sale = Sale()
+            sale.productId = productId
+            sale.quantity = quantity
+            sale.date = date
+            sale.userId = 1
             saleDao.insert(sale)
         }
     }
 
     fun addSale(sale: Sale) {
-        Executors.newSingleThreadExecutor().execute {
-            saleDao.insert(sale)
-        }
+        Executors.newSingleThreadExecutor().execute { saleDao.insert(sale) }
     }
 
-    fun getSalesByDate(date: String): LiveData<List<Sale>> {
+    fun getSalesByDate(date: String?): LiveData<MutableList<Sale?>?>? {
         return saleDao.getSalesByDate(date)
     }
 
-    fun getAllSales(): LiveData<List<Sale>> {
-        return saleDao.getAllSales()
-    }
+    val allSales: LiveData<MutableList<Sale?>?>?
+        get() = saleDao.allSales
 
-    fun getMonthlySales(): LiveData<Map<String, Int>> {
-        return saleDao.getMonthlySales()
-    }
+    val monthlySales: LiveData<MutableMap<String?, Int?>?>?
+        get() = saleDao.getMonthlySales()
 
-    fun getProductPrice(productId: Int): LiveData<Double> {
+    fun getProductPrice(productId: Int): LiveData<Double?>? {
         return saleDao.getProductPrice(productId)
     }
 
-    fun saveSale(productId: Int, quantity: Int, date: String) {
+    fun saveSale(productId: Int, quantity: Int, date: String?) {
         Executors.newSingleThreadExecutor().execute {
             val existing = saleDao.getSaleForProductAndDate(productId, date)
             if (existing != null) {
                 existing.quantity = quantity
                 saleDao.update(existing)
             } else {
-                val sale = Sale().apply {
-                    this.productId = productId
-                    this.quantity = quantity
-                    this.date = date
-                    this.userId = 1
-                }
+                val sale = Sale()
+                sale.productId = productId
+                sale.quantity = quantity
+                sale.date = date
+                sale.userId = 1
                 saleDao.insert(sale)
             }
         }
@@ -69,17 +68,26 @@ class SaleRepository(application: Application) {
         return (product.price - product.costPrice) * sale.quantity
     }
 
-    fun calculateTotalProfit(sales: List<Sale>?, products: List<Product>?): Double {
+    fun calculateTotalProfit(sales: MutableList<Sale>?, products: MutableList<Product>?): Double {
         if (sales == null || products == null) return 0.0
 
-        return sales.sumOf { sale ->
-            findProductById(products, sale.productId)?.let { product ->
-                calculateProfit(sale, product)
-            } ?: 0.0
+        var totalProfit = 0.0
+        for (sale in sales) {
+            val product = findProductById(products, sale.productId)
+            if (product != null) {
+                totalProfit += calculateProfit(sale, product)
+            }
         }
+        return totalProfit
     }
 
-    private fun findProductById(products: List<Product>?, productId: Int): Product? {
-        return products?.find { it.id == productId }
+    private fun findProductById(products: MutableList<Product>?, productId: Int): Product? {
+        if (products == null) return null
+        for (product in products) {
+            if (product.id.toInt() == productId) {
+                return product
+            }
+        }
+        return null
     }
-} 
+}

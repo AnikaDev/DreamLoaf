@@ -7,26 +7,26 @@ import com.example.dreamloaf.data.Product
 import com.example.dreamloaf.data.ProductDao
 import java.util.concurrent.Executors
 
-class ProductRepository(application: Application) {
-    private val productDao: ProductDao = AppDatabase.getInstance(application).productDao()
+class ProductRepository(application: Application?) {
+    private val productDao: ProductDao
+
+    init {
+        val db: AppDatabase = AppDatabase.getInstance(application!!.applicationContext)!!
+        productDao = db.productDao()!!
+    }
 
     fun insertProduct(product: Product) {
-        Executors.newSingleThreadExecutor().execute {
-            productDao.insert(product)
-        }
+        Executors.newSingleThreadExecutor().execute { productDao.insert(product) }
     }
 
-    fun getAllProducts(): LiveData<List<Product>> {
-        return productDao.getAllProducts()
-    }
+    val allProducts: LiveData<MutableList<Product?>?>?
+        get() = productDao.allProducts
 
-    fun getProductById(productId: Int): LiveData<Product> {
+    fun getProductById(productId: Int): LiveData<Product?>? {
         return productDao.getProductById(productId)
     }
 
     fun deleteProduct(productId: Int) {
-        Executors.newSingleThreadExecutor().execute {
-            productDao.delete(productId)
-        }
+        Executors.newSingleThreadExecutor().execute(Runnable { productDao.delete(productId) })
     }
-} 
+}

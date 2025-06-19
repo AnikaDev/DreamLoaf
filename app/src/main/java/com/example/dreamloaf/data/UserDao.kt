@@ -11,14 +11,14 @@ interface UserDao {
     fun insert(user: User)
 
     @Query("SELECT * FROM users WHERE login = :login AND password = :password")
-    fun getUser(login: String, password: String): User?
+    fun getUser(login: String?, password: String?): User?
 
     @Query("SELECT * FROM users WHERE role = :role")
-    fun getUsersByRole(role: String): List<User>
+    fun getUsersByRole(role: String?): MutableList<User?>?
 
-    @Query("SELECT * FROM users")
-    fun getAllUsers(): LiveData<List<User>>
+    @get:Query("SELECT * FROM users")
+    val allUsers: LiveData<MutableList<User?>?>?
 
     @Query("SELECT * FROM users WHERE login = :login LIMIT 1")
-    fun getUserByLogin(login: String): User?
-} 
+    fun getUserByLogin(login: String?): User?
+}

@@ -4,11 +4,20 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "products")
-data class Product(
+class Product {
+    @JvmField
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
-    var name: String = "",
-    var weight: Double = 0.0,
-    var price: Double = 0.0,
+    var id: Int = 0
+
+    @JvmField
+    var name: String? = null
+
+    @JvmField
+    var weight: Double = 0.0
+
+    @JvmField
+    var price: Double = 0.0
+
+    @JvmField
     var costPrice: Double = 0.0
-) 
+}

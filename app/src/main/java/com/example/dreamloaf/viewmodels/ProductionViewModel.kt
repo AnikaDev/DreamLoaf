@@ -8,10 +8,15 @@ import com.example.dreamloaf.repository.ProductionRepository
 import java.util.concurrent.Executors
 
 class ProductionViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository = ProductionRepository(application)
-    val allProduction: LiveData<List<Production>> = repository.getAllProduction()
+    private val repository: ProductionRepository
+    val allProduction: LiveData<MutableList<Production?>?>?
 
-    fun getProductionByDate(date: String): LiveData<List<Production>> {
+    init {
+        repository = ProductionRepository(application)
+        allProduction = repository.allProduction
+    }
+
+    fun getProductionByDate(date: String?): LiveData<MutableList<Production?>?>? {
         return repository.getProductionByDate(date)
     }
 
@@ -21,7 +26,6 @@ class ProductionViewModel(application: Application) : AndroidViewModel(applicati
                 production.productId,
                 production.date
             )
-
             if (existing != null) {
                 existing.quantity = production.quantity
                 repository.update(existing)
@@ -31,7 +35,7 @@ class ProductionViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    fun saveProductionData(productId: Int, quantity: Int, date: String) {
+    fun saveProductionData(productId: Int, quantity: Int, date: String?) {
         repository.saveProductionData(productId, quantity, date)
     }
 
@@ -42,4 +46,4 @@ class ProductionViewModel(application: Application) : AndroidViewModel(applicati
     fun deleteProduction(production: Production) {
         repository.delete(production.id)
     }
-} 
+}

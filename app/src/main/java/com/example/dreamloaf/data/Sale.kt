@@ -5,16 +5,21 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "sales")
-data class Sale(
+class Sale {
+    @JvmField
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    var id: Int = 0
 
+    @JvmField
     @ColumnInfo(name = "product_id")
-    var productId: Int = 0,
+    var productId: Int = 0
 
-    var quantity: Int = 0,
-    var date: String = "",
+    @JvmField
+    var quantity: Int = 0
+    @JvmField
+    var date: String? = null
 
+    @JvmField
     @ColumnInfo(name = "user_id")
     var userId: Int = 0
-) 
+}

@@ -7,33 +7,29 @@ import com.example.dreamloaf.data.Sale
 import com.example.dreamloaf.repository.SaleRepository
 
 class SaleViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository = SaleRepository(application)
+    private val repository: SaleRepository
+    val allSales: LiveData<MutableList<Sale?>?>?
+    val monthlySales: LiveData<MutableMap<String?, Int?>?>?
 
-    fun addSale(productId: Int, quantity: Int, date: String) {
-        repository.addSale(productId, quantity, date)
+    init {
+        repository = SaleRepository(application)
+        allSales = repository.allSales
+        monthlySales = repository.monthlySales
     }
 
     fun addSale(sale: Sale) {
         repository.addSale(sale)
     }
 
-    fun getSalesByDate(date: String): LiveData<List<Sale>> {
+    fun getSalesByDate(date: String?): LiveData<MutableList<Sale?>?>? {
         return repository.getSalesByDate(date)
     }
 
-    fun getMonthlySales(): LiveData<Map<String, Int>> {
-        return repository.getMonthlySales()
-    }
-
-    fun saveSale(productId: Int, quantity: Int, date: String) {
+    fun saveSale(productId: Int, quantity: Int, date: String?) {
         repository.saveSale(productId, quantity, date)
     }
 
-    fun getProductPrice(productId: Int): LiveData<Double> {
+    fun getProductPrice(productId: Int): LiveData<Double?>? {
         return repository.getProductPrice(productId)
     }
-
-    fun getAllSales(): LiveData<List<Sale>> {
-        return repository.getAllSales()
-    }
-} 
+}

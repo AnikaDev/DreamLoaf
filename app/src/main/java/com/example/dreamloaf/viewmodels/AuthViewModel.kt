@@ -9,20 +9,24 @@ import com.example.dreamloaf.repository.AuthRepository
 import java.util.concurrent.Executors
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
-    private val authRepo = AuthRepository(application)
-    private val currentUserRole = MutableLiveData<String>()
+    private val authRepo: AuthRepository
+    private val currentUserRole: MutableLiveData<String?> = MutableLiveData<String?>()
 
-    fun checkLoginAvailable(login: String): LiveData<Boolean> {
-        val result = MutableLiveData<Boolean>()
-        Executors.newSingleThreadExecutor().execute {
+    init {
+        authRepo = AuthRepository(application)
+    }
+
+    fun checkLoginAvailable(login: String?): LiveData<Boolean?> {
+        val result: MutableLiveData<Boolean?> = MutableLiveData<Boolean?>()
+        Executors.newSingleThreadExecutor().execute(Runnable {
             result.postValue(!authRepo.isLoginExists(login))
-        }
+        })
         return result
     }
 
-    fun registerUser(user: User): LiveData<Boolean> {
-        val result = MutableLiveData<Boolean>()
-        Executors.newSingleThreadExecutor().execute {
+    fun registerUser(user: User): LiveData<Boolean?> {
+        val result: MutableLiveData<Boolean?> = MutableLiveData<Boolean?>()
+        Executors.newSingleThreadExecutor().execute(Runnable {
             if (authRepo.isLoginExists(user.login)) {
                 result.postValue(false)
             } else {
@@ -30,16 +34,16 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                 currentUserRole.postValue(user.role)
                 result.postValue(true)
             }
-        }
+        })
         return result
     }
 
-    fun loginUser(login: String, password: String): LiveData<User> {
-        val result = MutableLiveData<User>()
-        Executors.newSingleThreadExecutor().execute {
+    fun loginUser(login: String?, password: String?): LiveData<User?> {
+        val result: MutableLiveData<User?> = MutableLiveData<User?>()
+        Executors.newSingleThreadExecutor().execute(Runnable {
             val user = authRepo.login(login, password)
             result.postValue(user)
-        }
+        })
         return result
     }
-} 
+}
